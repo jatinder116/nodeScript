@@ -50,7 +50,7 @@ KEYALGO="eth_secp256k1"
 LOGLEVEL="info"
 
 # Set dedicated home directory for the shidod instance
-HOMEDIR="/data/.tmp-shidod"
+HOMEDIR="$HOME/.tmp-shidod"
 
 # Path variables
 CONFIG=$HOMEDIR/config/config.toml
