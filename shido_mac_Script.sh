@@ -37,7 +37,7 @@ if [ "$OS" == "Darwin" ]; then
   echo "Please check the OS version support; at this time, only mac ventura 13 are supported."
   exit 1
   fi
-#wget https://testnet-blockchain-shido.s3.us-west-2.amazonaws.com/shido_snapshot_12122023.zip
+wget https://testnet-blockchain-shido.s3.us-west-2.amazonaws.com/shido_snapshot_12122023.zip
 #==========================================================================================================================================
 
 KEYS="alice"
@@ -118,7 +118,8 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 	rm -rf $HOMEDIR/config/genesis.json
 
 	# paste the genesis file 
-	cp $HOME/Downloads/shidochainValidatorScript/genesis.json $HOMEDIR/config
+	cp $current_path/genesis.json $HOMEDIR/config
+
   cd $HOMEDIR/data
 	unzip	$current_path/shido_snapshot_12122023.zip
 	# Run this to ensure everything worked and that the genesis file is setup correctly
@@ -165,12 +166,12 @@ PLIST_CONTENT="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 # Write the plist content to a temporary file
 echo "$PLIST_CONTENT" > /tmp/com.shido.myservice.plist
 
+# Move the temporary file to the final location
+sudo mv /tmp/com.shido.myservice.plist "$PLIST_PATH"
+
 # Set the correct ownership and permissions
 sudo chown $USER "$PLIST_PATH"
 sudo chmod 644 "$PLIST_PATH"
-
-# Move the temporary file to the final location
-sudo mv /tmp/com.shido.myservice.plist "$PLIST_PATH"
 
 # Load and start the launch agent
 launchctl load "$PLIST_PATH"
