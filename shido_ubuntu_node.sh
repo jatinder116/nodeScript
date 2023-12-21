@@ -40,7 +40,7 @@ else
   echo "Please check the OS version support; at this time, only Ubuntu 20.04 and 22.04 are supported."
   exit 1
 fi
-# wget https://testnet-blockchain-shido.s3.us-west-2.amazonaws.com/shido_snapshot_12122023.zip
+wget https://testnet-blockchain-shido.s3.us-west-2.amazonaws.com/shido_snapshot_12122023.zip
 #==========================================================================================================================================
 KEYS="alice"
 CHAINID="shido_9007-1"
